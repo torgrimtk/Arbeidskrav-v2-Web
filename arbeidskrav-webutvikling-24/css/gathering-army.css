@@ -1,0 +1,13 @@
+#army-shop{
+    background-color: pink;
+}
+
+/* Under er metoden for å style enkeltelementer i CSS fra JS-filen. 
+.warriors{
+    background-color: blue;
+}
+*/
+
+.warriors{
+    background-color: blue;
+}
