@@ -20,7 +20,7 @@ const animalsData = [
 const machinesData = [
     {
         id: 0,
-        name: "catapult",
+        name: "Catapult",
         image: "catapult.png"
     }
 ]
