@@ -17,10 +17,10 @@ const animalsData = [
         image: "horse.png"
     }
 ];
-const machineData = [
+const machinesData = [
     {
         id: 0,
-        name: "catapult",
+        name: "Catapult",
         image: "catapult.png"
     }
 ]
@@ -33,7 +33,7 @@ const createArmy = (title, items, className) => {
             <h3>${title}</h3>
             ${items.map(item => `
               <div>
-                <img class="${className}-img" src="images/${items.image}" alt="${item.name}">
+                <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
                 <button>Buy ${item.name}</button>
               </div>  
             `).join('')}
@@ -42,7 +42,7 @@ const createArmy = (title, items, className) => {
 }; 
 
 shopSection.innerHTML = `
-    ${createCategoryHTML('Warriors', warriors, 'warriors')}
-    ${createCategoryHTML('Animals', animals, 'animals')}
-    ${createCategoryHTML('War Machines', machines, 'war-machines')}
+    ${createArmy('Warriors', warriorsData, 'warriors')}
+    ${createArmy('Animals', animalsData, 'animals')}
+    ${createArmy('War Machines', machinesData, 'war-machines')}
 `;
