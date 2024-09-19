@@ -53,6 +53,11 @@ const animalsData = [
         id: 0,
         name: "Horse",
         image: "horse.png"
+    },
+    {
+        id: 1,
+        name: "Elephant",
+        image: "elephant.png"
     }
 ];
 const machinesData = [
@@ -87,7 +92,7 @@ shopSection.innerHTML = `
     <div class="grid-category-row">
     ${createArmy('Animals', animalsData, 'animals')}
     <div/>
-    
+
     <div class="grid-category-row">
     ${createArmy('War Machines', machinesData, 'war-machines')}
     </div>
