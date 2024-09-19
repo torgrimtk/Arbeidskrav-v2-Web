@@ -68,7 +68,7 @@ const machinesData = [
     }
 ]
 
-const shopSection = document.getElementById("army-shop");
+const shopSection = document.getElementById("main-container");
 
 const createArmy = (title, items, className) => {
     return `
@@ -84,14 +84,14 @@ const createArmy = (title, items, className) => {
     `;
 }; 
 
-shopSection.innerHTML = `
+shopSection.innerHTML =`
     <div class="grid-category-row">
     ${createArmy('Warriors', warriorsData, 'warriors')}
     </div>
 
     <div class="grid-category-row">
     ${createArmy('Animals', animalsData, 'animals')}
-    <div/>
+    </div>
 
     <div class="grid-category-row">
     ${createArmy('War Machines', machinesData, 'war-machines')}
