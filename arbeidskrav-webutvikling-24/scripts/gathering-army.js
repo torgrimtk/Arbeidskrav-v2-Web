@@ -1,13 +1,51 @@
 const warriorsData = [
     {
         id: 0,
-        name: "Snake",
-        image: "warrior-1.jpg"
+        name: "Aragorn",
+        image: "warrior-2.jpg",
+        price: 1000
     },
     {
         id: 1,
-        name: "Giant",
-        image:"warrior-2.jpg"
+        name: "Legolas",
+        image:"warrior-2.jpg",
+        price: 800
+    },
+    {
+        id: 2,
+        name: "Gimli",
+        image:"warrior-2.jpg",
+        price: 800
+    },
+    {
+        id: 3,
+        name: "Boromir",
+        image:"warrior-2.jpg",
+        price: 700
+    },
+    {
+        id: 4,
+        name: "Gandalf",
+        image:"warrior-2.jpg",
+        price: 1500
+    },
+    {
+        id: 5,
+        name: "Frodo",
+        image:"warrior-2.jpg",
+        price: 400
+    },
+    {
+        id: 6,
+        name: "Sam",
+        image:"warrior-2.jpg",
+        price: 300
+    },
+    {
+        id: 7,
+        name: "Pippin",
+        image:"warrior-2.jpg",
+        price: 350
     }
 ];
 const animalsData = [
@@ -34,7 +72,7 @@ const createArmy = (title, items, className) => {
             ${items.map(item => `
               <div>
                 <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
-                <button>Buy ${item.name}</button>
+                <button>Buy ${item.name}? Price: ${item.price}g</button>
               </div>  
             `).join('')}
         </article>
