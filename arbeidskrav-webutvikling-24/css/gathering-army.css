@@ -9,5 +9,39 @@
 */
 
 .warriors{
-    background-color: blue;
+    background-color: white;
+}
+
+
+.grid-category-row{
+    display: grid;
+    grid-template-columns:repeat(1, 1fr);
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.warriors{
+    display: flex;
+    flex-direction: row;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+.animals{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.war-machines{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.warriors-img, .animals-img, .war-machines-img {
+    width: 100px; 
+    height: auto;
+    margin-bottom: 10px;
 }
