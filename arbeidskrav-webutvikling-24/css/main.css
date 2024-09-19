@@ -1,3 +1,21 @@
 /*
     main.css is the usual name for a CSS which will be used on all/most pages.
 */
+.grid-6-column{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.warriors, .animals, .war-machines{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.warriors-img, .animals-img, .war-machines-img{
+    width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+}

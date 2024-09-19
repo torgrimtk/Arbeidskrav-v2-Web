@@ -1,5 +1,5 @@
 #army-shop{
-    background-color: pink;
+    background-color: white;
 }
 
 /* Under er metoden for å style enkeltelementer i CSS fra JS-filen. 
@@ -9,5 +9,5 @@
 */
 
 .warriors{
-    background-color: rgb(152, 152, 187);
+    background-color: blue;
 }
