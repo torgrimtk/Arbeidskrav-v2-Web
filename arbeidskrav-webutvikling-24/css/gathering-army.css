@@ -9,7 +9,7 @@
 */
 
 #main-container {
-    display: grid; 
+    display: grid;
     grid-template-rows: auto auto auto;
     gap: 20px;
     justify-items: center;
@@ -32,17 +32,28 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+    max-width: 1200px;
+    width: 100%;
+    justify-items: center;
+    align-items: stretch;
 }
 
-.warrior-box, .animal-box, .war-machine-box {
+.warrior-box,
+.animal-box,
+.war-machine-box {
     border: 2px solid black;
     padding: 10px;
     text-align: center;
     background-color: white;
     min-height: 180px;
+    box-sizing: border-box;
+    width: 100%;
+
 }
 
-.warriors, .animals, .war-machines {
+.warriors,
+.animals,
+.war-machines {
     
 }
 
@@ -54,6 +65,3 @@
     height: auto;
     margin-bottom: 10px;
 }
-
-
-
