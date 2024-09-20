@@ -1,4 +1,4 @@
-#army-shop{
+#army-shop {
     background-color: white;
 }
 
@@ -8,19 +8,25 @@
 }
 */
 
-.warriors{
-    background-color: white;
-}
 
 
-.grid-category-row{
+
+
+.grid-category-row {
     display: grid;
-    grid-template-columns:repeat(1, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
     margin-bottom: 20px;
 }
 
-.warriors{
+.warrior-box {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.warriors {
     display: flex;
     flex-direction: row;
     grid-template-rows: repeat(1, 1fr);
@@ -29,20 +35,23 @@
     gap: 24px;
 }
 
-.animals{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.war-machines{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.warriors-img, .animals-img, .war-machines-img {
-    width: 100px; 
+.warriors-img,
+.animals-img,
+.war-machines-img {
+    width: 100px;
     height: auto;
     margin-bottom: 10px;
 }
+
+.animals {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.war-machines {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+

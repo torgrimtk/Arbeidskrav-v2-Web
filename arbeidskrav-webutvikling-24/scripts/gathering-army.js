@@ -35,8 +35,9 @@ const createArmy = (title, items, className) => {
     return `
         <article class="${className}">
             <h3>${title}</h3>
+            <div class="grid-category-row">
             ${items.map(item => `
-              <div>
+              <div class="warrior-box">
                 <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
                 <button class="buy-btn" data-id="${item.id}" data-price="${item.price}">Buy ${item.name}? Price: ${item.price}g</button> 
                 <button class="refund-btn" data-id="${item.id}" data-price="${item.price}" disabled>Refund ${item.name}</button>
