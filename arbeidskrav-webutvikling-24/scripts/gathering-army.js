@@ -19,9 +19,35 @@ const animalsData = [
         id: 1,
         name: "Elephant",
         image: "elephant.png"
+    },
+    {
+        id: 2,
+        name: "Horse",
+        image: "horse.png"
+    },
+    {
+        id: 3,
+        name: "Elephant",
+        image: "elephant.png"
     }
+    
 ];
 const machinesData = [
+    {
+        id: 0,
+        name: "Catapult",
+        image: "catapult.png"
+    },
+    {
+        id: 0,
+        name: "Catapult",
+        image: "catapult.png"
+    },
+    {
+        id: 0,
+        name: "Catapult",
+        image: "catapult.png"
+    },
     {
         id: 0,
         name: "Catapult",
