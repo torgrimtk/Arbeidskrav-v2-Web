@@ -25,28 +25,25 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+    justify-items: center;
 }
 
 .grid-category-columns {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    margin-bottom: 20px;
 }
 
 .warrior-box, .animal-box, .war-machine-box {
     border: 2px solid black;
     padding: 10px;
-    
     text-align: center;
     background-color: white;
     min-height: 180px;
 }
 
-
 .warriors, .animals, .war-machines {
-    grid: display;
-    gap: 24px;
+    
 }
 
 
