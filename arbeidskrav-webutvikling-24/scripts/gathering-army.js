@@ -35,7 +35,7 @@ const createArmy = (title, items, className) => {
     return `
         <article class="${className}">
             <h3>${title}</h3>
-            <div class="grid-category-row">
+            <div class="grid-category-columns">
             ${items.map(item => `
               <div class="warrior-box">
                 <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
