@@ -19,6 +19,16 @@ const animalsData = [
         id: 1,
         name: "Elephant",
         image: "elephant.png"
+    },
+    {
+        id: 2,
+        name: "Horse",
+        image: "horse.png"
+    },
+    {
+        id: 1,
+        name: "Elephant",
+        image: "elephant.png"
     }
 ];
 const machinesData = [
@@ -26,6 +36,21 @@ const machinesData = [
         id: 0,
         name: "Catapult",
         image: "catapult.png"
+    },
+    {
+        id: 1,
+        name: "Cannon",
+        image: "cannon.png"
+    },
+    {
+        id: 0,
+        name: "Catapult",
+        image: "catapult.png"
+    },
+    {
+        id: 1,
+        name: "Cannon",
+        image: "cannon.png"
     }
 ]
 
@@ -37,7 +62,7 @@ const createArmy = (title, items, className) => {
             <h3>${title}</h3>
             <div class="grid-category-columns">
             ${items.map(item => `
-              <div class="warrior-box">
+              <div class="warrior-box">              
                 <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
                 <button class="buy-btn" data-id="${item.id}" data-price="${item.price}">Buy ${item.name}? Price: ${item.price}g</button> 
                 <button class="refund-btn" data-id="${item.id}" data-price="${item.price}" disabled>Refund ${item.name}</button>

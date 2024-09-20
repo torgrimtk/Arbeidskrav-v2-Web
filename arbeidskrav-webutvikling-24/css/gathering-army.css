@@ -22,6 +22,7 @@
 .warrior-box {
     border: 2px solid black;
     padding: 10px;
+    
     text-align: center;
     background-color: white;
 }
@@ -48,11 +49,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 24px;
 }
 
 .war-machines {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 24px;
 }
 
