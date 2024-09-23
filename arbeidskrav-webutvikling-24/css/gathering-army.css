@@ -21,6 +21,29 @@
     font-weight: bold;
 }
 
+.resources {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 500px;
+    margin-top: 20px;
+}
+
+.resource-box {
+    text-align: center;
+    width: 100%;
+}
+
+.resource-box img {
+    width: 50px;
+}
+
+.resource-box span {
+    display: grid;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
 #gold-display{
     text-align: center;
     font-size: 30px;

@@ -81,7 +81,16 @@ const createArmy = (title, items, className) => {
 
 
 let currentGold = 10000;
+let currentIron = 0;
+let currentWood = 0;
+
 document.getElementById("gold-display").textContent = `Current gold: ${currentGold}g`;
+
+document.getElementById("currentGold").textContent = `${currentGold}g`;
+
+document.getElementById("currentIron").textContent = `${currentIron}`;
+
+document.getElementById("currentWood").textContent = `${currentWood}`;
 
 shopSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("buy-btn")) {
@@ -112,6 +121,8 @@ shopSection.addEventListener("click", (e) => {
 
     }
 });
+
+
 
 shopSection.innerHTML = `
     <div class="grid-category-row">
