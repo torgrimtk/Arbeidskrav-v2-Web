@@ -16,9 +16,47 @@
 }
 
 .header-section{
-    text-align: center;
+    color: white;
+    text-align: left;
     font-size: 40px;
     font-weight: bold;
+    background-color: black;
+    padding: 5px;
+}
+.header-section button{
+    font-size: 15px;
+}
+.header-section a{
+    color: black;
+    font-size: 15px;
+    background-color: white;
+    padding: 5px;
+    font-family: sans-serif;
+    font-weight: normal;
+    
+}
+
+.resources {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 500px;
+    margin-top: 20px;
+}
+
+.resource-box {
+    text-align: center;
+    width: 100%;
+}
+
+.resource-box img {
+    width: 50px;
+}
+
+.resource-box span {
+    display: grid;
+    margin-top: 10px;
+    font-size: 18px;
 }
 
 #gold-display{
