@@ -55,6 +55,7 @@ const machinesData = [
     }
 ]
 
+const basketItems = document.getElementById("basket-items");
 const shopSection = document.getElementById("main-container");
 
 const createArmy = (title, items, className) => {
@@ -68,7 +69,7 @@ const createArmy = (title, items, className) => {
 
                 <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
 
-                <button class="buy-btn" data-id="${item.id}" data-price="${item.price}">Buy ${item.name}? Price: ${item.price}g</button>
+                <button class="buy-btn" data-id="${item.id}" data-price="${item.price}">Buy ${item.name}. Price: ${item.price}g</button>
 
                 <button class="refund-btn" data-id="${item.id}" data-price="${item.price}" disabled>Refund ${item.name}</button>
 
@@ -87,11 +88,16 @@ shopSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("buy-btn")) {
         const price = parseInt(e.target.getAttribute("data-price"));
         const refundButton = e.target.nextElementSibling;
+        const itemName = e.target.textContent.split(" ")[1]; //Dette henter item name
 
         if (currentGold >= price) {
             currentGold -= price;
             document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
-            alert(`You bought ${e.target.textContent.split(' ')[1]} for ${price}g`);
+            // alert(`You bought ${e.target.textContent.split(' ')[1]} for ${price}g`); // FJERNE?
+            
+            const li = document.createElement("li");
+            li.textContent = itemName; 
+            basketItems.appendChild(li); //Appendchild fester det valgte itemet til basketcase
 
             refundButton.disabled = false;
             
@@ -103,10 +109,18 @@ shopSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("refund-btn")) {
         const price = parseInt(e.target.getAttribute("data-price"));
         const buyButton = e.target.previousElementSibling;
+        const itemName = buyButton.textContent.split(" ")[1];
 
         currentGold += price;
         document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
-        alert(`You refunded ${buyButton.textContent.split(' ')[1]} and received ${price}g back`);
+        // alert(`You refunded ${buyButton.textContent.split(' ')[1]} and received ${price}g back`);
+
+        const liItems = basketItems.querySelectorAll("li");
+        liItems.forEach(li => {
+            if (li.textContent === itemName) {
+                li.remove();
+            }
+        });
 
         e.target.disabled = true;
 
