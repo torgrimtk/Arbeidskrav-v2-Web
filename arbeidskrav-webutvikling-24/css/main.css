@@ -1,3 +1,55 @@
 /*
     main.css is the usual name for a CSS which will be used on all/most pages.
 */
+.navigation-bar{
+    color: white;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: black;
+    padding: 5px;
+}
+.navigation-bar button{
+    font-size: 15px;
+}
+.navigation-barn a{
+    color: black;
+    font-size: 15px;
+    background-color: white;
+    padding: 5px;
+    font-family: sans-serif;
+    font-weight: normal;
+    
+}
+
+.resources {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 500px;
+    margin-top: 20px;
+}
+.resource-box {
+    text-align: center;
+    width: 100%;
+}
+.resource-box img {
+    width: 50px;
+}
+.resource-box span {
+    display: grid;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.gather-resources{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+.gather-resources img{
+    width: 800px;
+    border-radius: 15%;
+}
