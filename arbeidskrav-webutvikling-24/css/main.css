@@ -41,15 +41,3 @@
     margin-top: 10px;
     font-size: 18px;
 }
-
-.gather-resources{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    margin-top: 20px;
-}
-.gather-resources img{
-    width: 800px;
-    border-radius: 15%;
-}
