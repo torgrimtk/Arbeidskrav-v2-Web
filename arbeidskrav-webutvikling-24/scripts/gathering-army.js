@@ -93,16 +93,20 @@ document.getElementById("currentIron").textContent = `${currentIron}`;
 
 document.getElementById("currentWood").textContent = `${currentWood}`;
 
+const purchasedItems = {};
+
 shopSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("buy-btn")) {
         const price = parseInt(e.target.getAttribute("data-price"));
         const refundButton = e.target.nextElementSibling;
+        const itemId = e.target.getAttribute("data-id");
         const itemName = e.target.textContent.split(" ")[1]; //Dette henter item name
 
         if (currentGold >= price) {
             currentGold -= price;
             document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
-            // alert(`You bought ${e.target.textContent.split(' ')[1]} for ${price}g`); // FJERNE?
+            
+            purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1; //!!!!!??????
             
             const li = document.createElement("li");
             li.textContent = itemName; 
@@ -113,28 +117,34 @@ shopSection.addEventListener("click", (e) => {
         } else {
             alert(`You do not have enough gold.`);
         }
-    }
 
-    if (e.target.classList.contains("refund-btn")) {
+    }   if (e.target.classList.contains("refund-btn")) {
         const price = parseInt(e.target.getAttribute("data-price"));
         const buyButton = e.target.previousElementSibling;
+        const itemId = buyButton.getAttribute("data-id");
         const itemName = buyButton.textContent.split(" ")[1];
 
-        currentGold += price;
-        document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
-        // alert(`You refunded ${buyButton.textContent.split(' ')[1]} and received ${price}g back`);
+        if (purchasedItems[itemId] > 0) {
+            currentGold += price;
+            document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
 
-        const liItems = basketItems.querySelectorAll("li");
-        liItems.forEach(li => {
-            if (li.textContent === itemName) {
-                li.remove();
+            purchasedItems[itemId]--;
+            
+            const liItems = basketItems.querySelectorAll("li");
+            for (let li of liItems) {
+                if (li.textContent === itemName) {
+                    li.remove()
+                    break;
+                }
             }
-        });
-
-        e.target.disabled = true;
-
+            if (purchasedItems[itemId] === 0) {
+                e.target.disabled = true;
+            }
+        } 
     }
-});
+    
+
+        });
 
 
 
