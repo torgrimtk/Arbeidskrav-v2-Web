@@ -15,27 +15,6 @@
     justify-items: center;
 }
 
-.header-section{
-    color: white;
-    text-align: left;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: black;
-    padding: 5px;
-}
-.header-section button{
-    font-size: 15px;
-}
-.header-section a{
-    color: black;
-    font-size: 15px;
-    background-color: white;
-    padding: 5px;
-    font-family: sans-serif;
-    font-weight: normal;
-    
-}
-
 .resources {
     display: flex;
     justify-content: center;
@@ -54,7 +33,7 @@
 }
 
 .resource-box span {
-    display: grid;
+    display: flex;
     margin-top: 10px;
     font-size: 18px;
 }
