@@ -1,6 +1,3 @@
-
-
-
 let currentGold = parseInt(localStorage.getItem("gold")) || 0;
 let currentIron = parseInt(localStorage.getItem("iron")) || 0;
 let currentWood = parseInt(localStorage.getItem("wood")) || 0;
@@ -10,12 +7,12 @@ document.getElementById("currentWood").textContent = currentWood;
 
 document.getElementById("mines-of-thiartha").addEventListener("click", function() {
     currentIron++;
-    updateResources(null, currentIron, null);
+    updateResources(currentGold, currentIron, currentWood);
 });
 
 document.getElementById("woods-of-ghalduz").addEventListener("click", function() {
     currentWood++;
-    updateResources(null, currentWood, null);
+    updateResources(currentGold, currentIron, currentWood);
 });
 
 
