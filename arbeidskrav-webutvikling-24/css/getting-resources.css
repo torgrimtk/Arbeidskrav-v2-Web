@@ -13,3 +13,21 @@
     width: 800px;
     border-radius: 15%;
 }
+
+.sell-resources{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40%;
+    margin-top: 20px;
+}
+
+.sell-resources button{
+    max-width: 100%;
+    width: 100px;
+}
+
+#clear-local-storage{
+    background-color: red;
+    color: white;
+}
