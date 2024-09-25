@@ -49,7 +49,11 @@ const createArmy = (title, items, className) => {
 };
 
 
-let currentGold = 10000;
+let currentGold = localStorage.getItem("currentGold") ? parseInt(localStorage.getItem("currentGold")) : 10000;
+let purchasedItems = localStorage.getItem("purchasedItems") ? JSON.parse(localStorage.getItem("purchasedItems")) : {}; //FJERN!!!!!!
+
+
+
 let currentIron = 0;
 let currentWood = 0;
 
@@ -57,7 +61,11 @@ document.getElementById("gold-display").textContent = `Current gold: ${currentGo
 document.getElementById("currentGold").textContent = `${currentGold}g`;
 document.getElementById("currentIron").textContent = `${currentIron}`;
 document.getElementById("currentWood").textContent = `${currentWood}`;
-const purchasedItems = {};
+
+function saveToLocalStorage() {
+    localStorage.setItem("currentGold", currentGold);
+    localStorage.setItem("purchasedItems", JSON.stringify(purchasedItems));
+}
 
 shopSection.addEventListener("click", (e) => {
     if (e.target.classList.contains("buy-btn")) {
@@ -70,13 +78,15 @@ shopSection.addEventListener("click", (e) => {
             currentGold -= price;
             document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
             
-            purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1; //!!!!!??????
+            purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1; 
             
             const li = document.createElement("li");
             li.textContent = itemName; 
             basketItems.appendChild(li); //Appendchild fester det valgte itemet til basketcase
 
             refundButton.disabled = false;
+
+            saveToLocalStorage(); //FJERN!!!!!!!!!!!!!!!!!!!!!!!
             
         } else {
             alert(`You do not have enough gold.`);
@@ -104,11 +114,27 @@ shopSection.addEventListener("click", (e) => {
             if (purchasedItems[itemId] === 0) {
                 e.target.disabled = true;
             }
+            
+            saveToLocalStorage(); //FJERN!!!!!!!!!!!!!!!!!!
         } 
     }
     
 
-        });
+});
+
+window.addEventListener("load", () => {
+    for (const itemId in purchasedItems) {
+        const count = purchasedItems[itemId];
+        if (count > 0) {
+            const itemName = warriorsData[itemId]?.name || animalsData[itemId]?.name || machinesData[itemId]?.name;
+            for (let i = 0; i < count; i++) {
+                const li = document.createElement("li");
+                li.textContent = itemName;
+                basketItems.appendChild(li);
+            }
+        }
+    }
+}); //FJERN HELE KODEBLOKKEN
 
 
 
