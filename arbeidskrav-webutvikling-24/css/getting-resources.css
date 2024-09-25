@@ -9,6 +9,7 @@
     margin-top: 20px;
 }
 .gather-resources img{
+    max-width: 100%;
     width: 800px;
     border-radius: 15%;
 }
