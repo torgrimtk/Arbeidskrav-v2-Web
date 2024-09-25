@@ -20,7 +20,7 @@ document.getElementById("woods-of-ghalduz").addEventListener("click", function()
 document.querySelector(".sell-iron").addEventListener("click", function() {
     if(currentIron > 0) {
         currentIron --;
-        currentGold += 1;
+        currentGold += 100;
         updateResources(currentGold, currentIron, currentWood);
     } else{
         alert("You  have no iron to sell.")
@@ -29,7 +29,7 @@ document.querySelector(".sell-iron").addEventListener("click", function() {
 document.querySelector(".sell-wood").addEventListener("click", function(){
     if(currentWood > 0) {
         currentWood --;
-        currentGold += 1;
+        currentGold += 100;
         updateResources(currentGold, currentIron, currentWood);
     } else{
         alert("You have no wood to sell")

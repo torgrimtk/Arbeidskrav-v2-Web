@@ -26,11 +26,11 @@ const machinesData = [
 const basketItems = document.getElementById("basket-items");
 const shopSection = document.getElementById("main-container");
 
-let currentGold = 10000;
-let currentIron = 0;
-let currentWood = 0;
+let currentGold = parseInt(localStorage.getItem("gold")) || 0;
+let currentIron = parseInt(localStorage.getItem("iron")) || 0;
+let currentWood = parseInt(localStorage.getItem("wood")) || 0;
 
-document.getElementById("gold-display").textContent = `Current gold: ${currentGold}g`;
+//document.getElementById("gold-display").textContent = `Current gold: ${currentGold}g`;
 document.getElementById("currentGold").textContent = `${currentGold}g`;
 document.getElementById("currentIron").textContent = `${currentIron}`;
 document.getElementById("currentWood").textContent = `${currentWood}`;
@@ -67,7 +67,7 @@ shopSection.addEventListener("click", (e) => {
 
         if (currentGold >= price) {
             currentGold -= price;
-            document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
+            document.getElementById("currentGold").textContent = `Current gold: ${currentGold}`;
             
             purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1; //!!!!!??????
             
@@ -89,7 +89,7 @@ shopSection.addEventListener("click", (e) => {
 
         if (purchasedItems[itemId] > 0) {
             currentGold += price;
-            document.getElementById("gold-display").textContent = `Current gold: ${currentGold}`;
+            document.getElementById("currentGold").textContent = `Current gold: ${currentGold}`;
 
             purchasedItems[itemId]--;
             
