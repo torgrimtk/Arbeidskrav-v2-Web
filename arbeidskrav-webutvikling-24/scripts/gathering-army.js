@@ -1,4 +1,4 @@
-import ArmyModule from "./utilities/units.js";
+import ArmyModule from "./utilities/warriors.js";
 
 
 const shopSection = document.getElementById("main-container");
