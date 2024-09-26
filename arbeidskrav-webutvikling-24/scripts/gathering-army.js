@@ -1,16 +1,18 @@
 import ArmyModule from "./utilities/warriors.js";
 
-
 const shopSection = document.getElementById("main-container");
 
+// Her initialiserer vi ressurser i koden (gold, iron, wood) fra local storage, evt setter verdien til 0
 let currentGold = parseInt(localStorage.getItem("gold")) || 0;
 let currentIron = parseInt(localStorage.getItem("iron")) || 0;
 let currentWood = parseInt(localStorage.getItem("wood")) || 0;
 
+// Her displayer vi gold, iron og wood verdiene fra html elementene deres. 
 document.getElementById("currentGold").textContent = currentGold;
 document.getElementById("currentIron").textContent = currentIron;
 document.getElementById("currentWood").textContent = currentWood;
 
+// Denne funksjonen genererer en arme dynamisk med items. 
 const createArmy = (title, items, className) => {
     return `
         <article class="${className}">
@@ -28,7 +30,7 @@ const createArmy = (title, items, className) => {
                     data-id="${item.id}" 
                         data-price="${item.price}" 
                         ${className === 'war-machines' ? `data-wood="${item.woodCost}" data-iron="${item.ironCost}"` : ''}>
-                        Buy ${className === 'war-machines' ? `War Machine ${item.price}g, ${item.woodCost} wood, ${item.ironCost} iron` : `Warrior ${item.price}g`} 
+                        ${className === 'war-machines' ? `${item.price}g, ${item.woodCost} wood, ${item.ironCost} iron` : `${item.price}g`} 
                         <img src="images/gold-coin.png"/> 
                 </button>
 
@@ -41,42 +43,56 @@ const createArmy = (title, items, className) => {
     `;
 };
 
+// Denne funksjonen skaper en army og printer dem på siden. 
 (() =>{
     const allArmy = ArmyModule.getAll();
 
+    // Dette skaper en seksjon for hver kategori.
     document.getElementById("warrior-section").innerHTML = createArmy('Warriors', allArmy.warriors, 'warriors');
     document.getElementById("animal-section").innerHTML = createArmy('Animals', allArmy.animals, 'animals');
     document.getElementById("war-machine-section").innerHTML = createArmy('War Machines', allArmy.machines, 'war-machines');
 })();
 
+// Objekt for å holde track på kjøpte items
+const purchasedItems = {};
+
+// Eventlistener som håndterer kjøp og refunder button clicks
 shopSection.addEventListener("click", (e) => {
+    // Hvis en knapp er klikket, skjer følgende: 
     if (e.target.classList.contains("buy-btn")) {
-        const price = parseInt(e.target.getAttribute("data-price"));
-        const woodCost = e.target.getAttribute("data-wood" || 0);
-        const ironCost = e.target.getAttribute("data-iron" || 0);
-        const refundButton = e.target.nextElementSibling;
+        const price = parseInt(e.target.getAttribute("data-price")); // Henter pris
+        const woodCost = e.target.getAttribute("data-wood" || 0); // Henter wood (default 0)
+        const ironCost = e.target.getAttribute("data-iron" || 0); // Henter iron
+        const refundButton = e.target.nextElementSibling; // Henter refundbutton
+        const itemId = e.target.getAttribute("data-id"); // Henter itemID
 
-
+        // Sjekker om du har nok ressurser til å kjøpe produktet
         if (currentGold >= price && currentWood >= woodCost && currentIron >= ironCost) {
+            // Tar vekk kostnadene du har brukt
             currentGold -= price;
             currentWood -= woodCost; 
             currentIron -= ironCost; 
 
+            // Oppdaterer ressursene etter transaksjon
             document.getElementById("currentGold").textContent = currentGold;
             document.getElementById("currentWood").textContent = currentWood;
             document.getElementById("currentIron").textContent = currentIron;
 
+            // Oppdaterer itemcounten i objektet vi lagde over
+            purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1;
             refundButton.disabled = false;
         } else {
             alert(`You do not have enough gold.`);
         }
-    }   
-    
+    }
+
+    // Hvis refundknappen blir trykket bruker vi mye av samme kode som ved kjøp, bare reversert. 
     if (e.target.classList.contains("refund-btn")) {
         const price = parseInt(e.target.getAttribute("data-price"));
         const buyButton = e.target.previousElementSibling;
         const woodCost = parseInt(buyButton.getAttribute("data-wood") || 0); 
         const ironCost = parseInt(buyButton.getAttribute("data-iron") || 0); 
+        const itemId = buyButton.getAttribute("data-id");
     
         currentGold += price;
         currentWood += woodCost;
@@ -86,7 +102,10 @@ shopSection.addEventListener("click", (e) => {
         document.getElementById("currentWood").textContent = currentWood;
         document.getElementById("currentIron").textContent = currentIron;
 
-        e.target.disabled = true;
+        purchasedItems[itemId]--; // Dette decreaser itemcount    
+        if (purchasedItems[itemId] === 0){
+            e.target.disabled = true;
+        }    
     }
 });
 

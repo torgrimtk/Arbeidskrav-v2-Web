@@ -1,6 +1,19 @@
 /*
     Do you need a dedicated CSS file per HTML page in addition to main.css?
 */
+
+body {
+    background-image: url(/arbeidskrav-webutvikling-24/images/castle.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+}
+
+.resources{
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .gather-resources{
     display: flex;
     justify-content: center;

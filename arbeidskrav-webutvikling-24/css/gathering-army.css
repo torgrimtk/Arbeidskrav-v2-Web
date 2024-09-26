@@ -1,12 +1,14 @@
+body {
+    background-image: url(/arbeidskrav-webutvikling-24/images/castle.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 #army-shop {
     background-color: white;
 }
 
-/* Under er metoden for å style enkeltelementer i CSS fra JS-filen. 
-.warriors{
-    background-color: blue;
-}
-*/
 
 #main-container {
     display: grid;
@@ -14,11 +16,6 @@
     gap: 20px;
     justify-items: center;
 }
-
-/*#gold-display{
-    text-align: center;
-    font-size: 30px;
-}*/
 
 .grid-category-row h3 {
     text-align: center;
@@ -57,17 +54,25 @@
     box-sizing: border-box;
     width: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    background-color: rgba(65, 30, 9, 0.2)
+    background-color: rgba(255, 255, 255, 0.5)
 }
 
 .warrior-box:hover,
 .animal-box:hover,
 .war-machine-box:hover {
-    background-color: rgb(255, 255, 255); 
+    background-color: rgba(255, 255, 255, 0.9); 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
     transform: scale(1.05); 
 }
 
+.warrior-box h4, .animal-box h4, .war-machine-box h4 {
+    font-size: 18px;
+    color: rgb();
+    border: 1.5px solid black;
+    color: rgb(255, 255, 255);
+    background-color: rgb(129, 131, 132);
+    font-family:sans-serif;
+}
 
 .warriors-img,
 .animals-img,
@@ -77,38 +82,34 @@
     margin-bottom: 10px;
 }
 
-#shopping-basket {
-    width: 140px;
-    height: 140px;
-    margin-top: 20px;
-    padding: 10px; 
-    border: 2px solid rgb(0, 0, 0); 
-    background-color: rgb(255, 255, 255);
-    overflow-y: auto;
-    position-anchor: left;
-}
 
-.shopping-basket {
-
-}
-
-#basket-items {
-    list-style-type: none; 
-    padding: 0; 
-}
-
-#basket-items li {
-    margin-bottom: 10px; 
-}
-
-.warrior-box h4, .animal-box h4, .war-machine-box h4 {
-    font-size: 18px;
-    color: rgb();
-    border: 1.5px solid black;
-    color: rgb(255, 255, 255);
-    background-color: rgb(35, 109, 127);
-}
 
 .buy-btn img{
     height: 13px;
 }
+
+.buy-btn {
+    background-color: rgb(9, 117, 15);
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.refund-btn{
+    margin-top: 10px;
+    padding: 5px;
+    color: black;
+    border: 1px solid black;
+}
+
+
+.resources{
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+    
+
+#currentGold, #currentWood, #currentIron{
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
