@@ -35,6 +35,7 @@ document.querySelector(".sell-iron").addEventListener("click", function() {
         alert("You  have no iron to sell.")
     }
 });
+
 document.querySelector(".sell-wood").addEventListener("click", function(){
     if(currentWood > 0) {
         currentWood --;
