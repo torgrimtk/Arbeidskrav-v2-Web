@@ -8,12 +8,21 @@ document.getElementById("currentIron").textContent = currentIron;
 document.getElementById("currentWood").textContent = currentWood;
 
 document.getElementById("mines-of-thiartha").addEventListener("click", function() {
-    currentIron++;
+    let randomAmount = Math.floor(Math.random() * 15) + 3;
+    let randomChance = Math.random();
+
+    if (randomChance < 0.75) {
+        currentIron += randomAmount;
+    } else {
+        currentGold += randomAmount;
+    }
+
     updateResources(currentGold, currentIron, currentWood);
 });
 
 document.getElementById("woods-of-ghalduz").addEventListener("click", function() {
-    currentWood++;
+    let randomWood = Math.floor(Math.random() * 20) + 1;
+    currentWood += randomWood;
     updateResources(currentGold, currentIron, currentWood);
 });
 

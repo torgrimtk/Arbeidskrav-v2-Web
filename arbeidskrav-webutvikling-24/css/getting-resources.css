@@ -31,3 +31,11 @@
     background-color: red;
     color: white;
 }
+
+#mines-of-thiartha:hover {
+    cursor: url("/arbeidskrav-webutvikling-24/images/pickaxe-cursor.png"), auto;
+}
+
+#woods-of-ghalduz:hover {
+    cursor: url("/arbeidskrav-webutvikling-24/images/axe-cursor.png"), auto;
+}
