@@ -1,12 +1,12 @@
 const warriorsData = [
-    { id: 0, name: "Aragorn", image: "warrior-2.jpg", price: 1000 },
-    { id: 1, name: "Legolas", image: "warrior-1.jpg", price: 800 },
-    { id: 2, name: "Gimli", image: "warrior-3.jpg", price: 800 },
-    { id: 3, name: "Boromir", image: "warrior-4.jpg", price: 700 },
-    { id: 4, name: "Gandalf", image: "warrior-5.jpg", price: 1500 },
-    { id: 5, name: "Frodo", image: "warrior-6.jpg", price: 400 },
-    { id: 6, name: "Sam", image: "warrior-1.jpg", price: 300 },
-    { id: 7, name: "Pippin", image: "warrior-2.jpg", price: 350 }
+    { id: 0, name: "Berserker", image: "warrior-2.jpg", price: 1000 },
+    { id: 1, name: "Shieldmaiden", image: "warrior-1.jpg", price: 800 },
+    { id: 2, name: "Colossus", image: "warrior-3.jpg", price: 800 },
+    { id: 3, name: "Warrior", image: "warrior-4.jpg", price: 700 },
+    { id: 4, name: "Rogue", image: "warrior-5.jpg", price: 1500 },
+    { id: 5, name: "Druid", image: "warrior-6.jpg", price: 400 },
+    { id: 6, name: "Warlock", image: "warrior-1.jpg", price: 300 },
+    { id: 7, name: "Healer", image: "warrior-2.jpg", price: 350 }
 ];
 
 const animalsData = [
@@ -17,11 +17,12 @@ const animalsData = [
 ];
 
 const machinesData = [
-    { id: 0, name: "Catapult", image: "catapult.png", price:500},
-    { id: 1, name: "Catapult", image: "cannon.png", price:600},
-    { id: 2, name: "Catapult", image: "catapult.png", price:500},
-    { id: 3, name: "Catapult", image: "cannon.png", price:600}
+    { id: 0, name: "Catapult", image: "catapult.png", price: 1200, woodCost: 400, ironCost: 100 },
+    { id: 1, name: "Cannon", image: "cannon.png", price: 1200, woodCost: 100, ironCost: 300 },
+    { id: 2, name: "Catapult", image: "catapult.png", price: 700, woodCost: 400, ironCost: 100 },
+    { id: 3, name: "Cannon", image: "cannon.png", price: 800, woodCost: 100, ironCost: 300 }
 ];
+
 
 const basketItems = document.getElementById("basket-items");
 const shopSection = document.getElementById("main-container");
@@ -45,9 +46,17 @@ const createArmy = (title, items, className) => {
 
               <div class="${className === 'warriors' ? 'warrior-box' : className === 'animals' ? 'animal-box' : 'war-machine-box'}">
 
+                <h4>${item.name}</h4>
+
                 <img class="${className}-img" src="images/${item.image}" alt="${item.name}">
 
-                <button class="buy-btn" data-id="${item.id}" data-price="${item.price}">Buy ${item.name}. Price: ${item.price}g</button>
+                <button class="buy-btn" 
+                    data-id="${item.id}" 
+                        data-price="${item.price}" 
+                        ${className === 'war-machines' ? `data-wood="${item.woodCost}" data-iron="${item.ironCost}"` : ''}>
+                        Buy ${className === 'war-machines' ? `War Machine ${item.price}g, ${item.woodCost} wood, ${item.ironCost} iron` : `Warrior ${item.price}g`} 
+                        <img src="images/gold-coin.png"/> 
+                </button>
 
                 <button class="refund-btn" data-id="${item.id}" data-price="${item.price}" disabled>Refund ${item.name}</button>
 
@@ -65,31 +74,49 @@ shopSection.addEventListener("click", (e) => {
         const itemId = e.target.getAttribute("data-id");
         const itemName = e.target.textContent.split(" ")[1]; //Dette henter item name
 
-        if (currentGold >= price) {
+        const woodCost = e.target.getAttribute("data-wood");
+        const ironCost = e.target.getAttribute("data-iron");
+
+        if (currentGold >= price && currentWood >= woodCost && currentIron >= ironCost) {
             currentGold -= price;
-            document.getElementById("currentGold").textContent = `Current gold: ${currentGold}`;
+            currentWood -= woodCost; 
+            currentIron -= ironCost; 
+
+            document.getElementById("currentGold").textContent = currentGold;
+            document.getElementById("currentWood").textContent = currentWood;
+            document.getElementById("currentIron").textContent = currentIron;
             
-            purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1; //!!!!!??????
-            
+            purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1; 
             const li = document.createElement("li");
             li.textContent = itemName; 
             basketItems.appendChild(li); //Appendchild fester det valgte itemet til basketcase
 
             refundButton.disabled = false;
-            
         } else {
             alert(`You do not have enough gold.`);
         }
 
-    }   if (e.target.classList.contains("refund-btn")) {
+    }   
+    
+    if (e.target.classList.contains("refund-btn")) {
         const price = parseInt(e.target.getAttribute("data-price"));
         const buyButton = e.target.previousElementSibling;
         const itemId = buyButton.getAttribute("data-id");
         const itemName = buyButton.textContent.split(" ")[1];
+        
+        const woodCost = buyButton.getAttribute("data-wood");
+        const ironCost = buyButton.getAttribute("data-iron");
 
         if (purchasedItems[itemId] > 0) {
             currentGold += price;
-            document.getElementById("currentGold").textContent = `Current gold: ${currentGold}`;
+            if (woodCost && ironCost) {
+                currentWood += parseInt(woodCost);
+                currentIron += parseInt(ironCost);
+            }
+
+            document.getElementById("currentGold").textContent = currentGold;
+            document.getElementById("currentWood").textContent = currentWood;
+            document.getElementById("currentIron").textContent = currentIron;
 
             purchasedItems[itemId]--;
             
@@ -107,7 +134,7 @@ shopSection.addEventListener("click", (e) => {
     }
     
 
-        });
+    });
 
 
 
