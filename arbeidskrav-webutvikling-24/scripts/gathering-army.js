@@ -1,26 +1,26 @@
 const warriorsData = [
     { id: 0, name: "Aragorn", image: "warrior-2.jpg", price: 1000 },
-    { id: 1, name: "Legolas", image: "warrior-2.jpg", price: 800 },
-    { id: 2, name: "Gimli", image: "warrior-2.jpg", price: 800 },
-    { id: 3, name: "Boromir", image: "warrior-2.jpg", price: 700 },
-    { id: 4, name: "Gandalf", image: "warrior-2.jpg", price: 1500 },
-    { id: 5, name: "Frodo", image: "warrior-2.jpg", price: 400 },
-    { id: 6, name: "Sam", image: "warrior-2.jpg", price: 300 },
+    { id: 1, name: "Legolas", image: "warrior-1.jpg", price: 800 },
+    { id: 2, name: "Gimli", image: "warrior-3.jpg", price: 800 },
+    { id: 3, name: "Boromir", image: "warrior-4.jpg", price: 700 },
+    { id: 4, name: "Gandalf", image: "warrior-5.jpg", price: 1500 },
+    { id: 5, name: "Frodo", image: "warrior-6.jpg", price: 400 },
+    { id: 6, name: "Sam", image: "warrior-1.jpg", price: 300 },
     { id: 7, name: "Pippin", image: "warrior-2.jpg", price: 350 }
 ];
 
 const animalsData = [
-    { id: 0, name: "Horse", image: "horse.png" },
-    { id: 1, name: "Elephant", image: "elephant.png" },
-    { id: 2, name: "Horse", image: "horse.png" },
-    { id: 3, name: "Elephant", image: "elephant.png" }
+    { id: 0, name: "Horse", image: "horse.png", price:350},
+    { id: 1, name: "Elephant", image: "elephant.png", price:400},
+    { id: 2, name: "Horse", image: "horse.png", price:350},
+    { id: 3, name: "Elephant", image: "elephant.png", price:400}
 ];
 
 const machinesData = [
-    { id: 0, name: "Catapult", image: "catapult.png" },
-    { id: 1, name: "Catapult", image: "catapult.png" },
-    { id: 2, name: "Catapult", image: "catapult.png" },
-    { id: 3, name: "Catapult", image: "catapult.png" }
+    { id: 0, name: "Catapult", image: "catapult.png", price:500},
+    { id: 1, name: "Catapult", image: "cannon.png", price:600},
+    { id: 2, name: "Catapult", image: "catapult.png", price:500},
+    { id: 3, name: "Catapult", image: "cannon.png", price:600}
 ];
 
 const basketItems = document.getElementById("basket-items");
@@ -31,9 +31,9 @@ let currentIron = parseInt(localStorage.getItem("iron")) || 0;
 let currentWood = parseInt(localStorage.getItem("wood")) || 0;
 
 //document.getElementById("gold-display").textContent = `Current gold: ${currentGold}g`;
-document.getElementById("currentGold").textContent = `${currentGold}g`;
-document.getElementById("currentIron").textContent = `${currentIron}`;
-document.getElementById("currentWood").textContent = `${currentWood}`;
+document.getElementById("currentGold").textContent = currentGold;
+document.getElementById("currentIron").textContent = currentIron;
+document.getElementById("currentWood").textContent = currentWood;
 const purchasedItems = {};
 
 const createArmy = (title, items, className) => {
