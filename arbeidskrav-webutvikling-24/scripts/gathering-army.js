@@ -49,7 +49,7 @@ const createArmy = (title, items, className) => {
     const printWarriors = WarriorModule.getAll();
     const printAnimalMachines = AnimalsMachinesModule.getAnimalsMachines();
 
-    // Dette skaper en seksjon for hver kategori.
+    // Dette skaper en seksjon for hver kategori også printer det til nettsiden.
     document.getElementById("warrior-section").innerHTML = createArmy('Warriors', printWarriors.warriors, 'warriors');
     document.getElementById("animal-section").innerHTML = createArmy('Animals', printAnimalMachines.animals, 'animals');
     document.getElementById("war-machine-section").innerHTML = createArmy('War Machines', printAnimalMachines.machines, 'war-machines');
