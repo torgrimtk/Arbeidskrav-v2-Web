@@ -58,18 +58,18 @@ const createArmy = (title, items, className) => {
 // Objekt for å holde track på kjøpte items
 const purchasedItems = {};
 
-const purchasedArmy = JASON.parse(localStorage.getItem("purchasedArmy")) || [];
+const purchasedArmy = JSON.parse(localStorage.getItem("purchasedArmy")) || [];
 
 // Eventlistener som håndterer kjøp og refunder button clicks
 shopSection.addEventListener("click", (e) => {
     // Hvis en knapp er klikket, skjer følgende: 
     if (e.target.classList.contains("buy-btn")) {
         const price = parseInt(e.target.getAttribute("data-price")); // Henter pris
-        const woodCost = e.target.getAttribute("data-wood" || 0); // Henter wood (default 0)
-        const ironCost = e.target.getAttribute("data-iron" || 0); // Henter iron
+        const woodCost = parseInt(e.target.getAttribute("data-wood")) || 0; // Henter wood (default 0)
+        const ironCost = (e.target.getAttribute("data-iron")) || 0; // Henter iron
         const refundButton = e.target.nextElementSibling; // Henter refundbutton
         const itemId = e.target.getAttribute("data-id"); // Henter itemID
-        const itemName = e.target.previousElementSibling.previousElementSibling.textContent;// Henter itemName
+        const itemName = e.target.previousElementSibling.previousElementSibling.textContent;
         const itemImage = e.target.previousElementSibling.getAttribute("src"); // Henter itemImage
 
         // Sjekker om du har nok ressurser til å kjøpe produktet
@@ -96,6 +96,9 @@ shopSection.addEventListener("click", (e) => {
                 price: price
             });
 
+            localStorage.setItem("purchasedArmy", JSON.stringify(purchasedArmy));
+
+           
         } else {
             alert(`You do not have enough gold.`);
         }
@@ -122,9 +125,9 @@ shopSection.addEventListener("click", (e) => {
             e.target.disabled = true;
         }    
 
-        const itemArmyRemove = purchasedArmy.findIndex(item => item.id === itemId);
-        if (itemArmyRemove !== -1){
-            purchasedArmy.splice(itemArmyRemove, 1);
+        const itemIndex = purchasedArmy.findIndex(item => item.id === itemId);
+        if (itemIndex !== -1){
+            purchasedArmy.splice(itemIndex, 1);
             localStorage.setItem("purchasedArmy", JSON.stringify(purchasedArmy));
         }
     }

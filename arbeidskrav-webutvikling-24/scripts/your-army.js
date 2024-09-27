@@ -1,3 +1,5 @@
+
+
 let currentGold = parseInt(localStorage.getItem("gold")) || 0;
 let currentIron = parseInt(localStorage.getItem("iron")) || 0;
 let currentWood = parseInt(localStorage.getItem("wood")) || 0;
@@ -7,6 +9,7 @@ document.getElementById("currentIron").textContent = currentIron;
 document.getElementById("currentWood").textContent = currentWood;
 
 const purchasedArmy = JSON.parse(localStorage.getItem("purchasedArmy")) || [];
+console.log("Purchased Army:", purchasedArmy);
 
 const armySection = document.getElementById("army-section");
 
