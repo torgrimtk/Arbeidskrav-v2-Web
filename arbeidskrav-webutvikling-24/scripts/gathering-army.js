@@ -58,7 +58,7 @@ const createArmy = (title, items, className) => {
 // Objekt for å holde track på kjøpte items
 const purchasedItems = {};
 
-const purchasedArmy = JASON.parse(localStorage.getItem("purchasedArmy")) || [];
+const purchasedArmy = JSON.parse(localStorage.getItem("purchasedArmy")) || [];
 
 // Eventlistener som håndterer kjøp og refunder button clicks
 shopSection.addEventListener("click", (e) => {
