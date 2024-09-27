@@ -1,4 +1,5 @@
-import ArmyModule from "./utilities/warriors.js";
+import WarriorModule from "./utilities/warriors.js";
+import AnimalsMachinesModule from "./utilities/animals-machines.js";
 
 const shopSection = document.getElementById("main-container");
 
@@ -45,12 +46,13 @@ const createArmy = (title, items, className) => {
 
 // Denne funksjonen skaper en army og printer dem på siden. 
 (() =>{
-    const allArmy = ArmyModule.getAll();
+    const printWarriors = WarriorModule.getAll();
+    const printAnimalMachines = AnimalsMachinesModule.getAnimalsMachines();
 
     // Dette skaper en seksjon for hver kategori.
-    document.getElementById("warrior-section").innerHTML = createArmy('Warriors', allArmy.warriors, 'warriors');
-    document.getElementById("animal-section").innerHTML = createArmy('Animals', allArmy.animals, 'animals');
-    document.getElementById("war-machine-section").innerHTML = createArmy('War Machines', allArmy.machines, 'war-machines');
+    document.getElementById("warrior-section").innerHTML = createArmy('Warriors', printWarriors.warriors, 'warriors');
+    document.getElementById("animal-section").innerHTML = createArmy('Animals', printAnimalMachines.animals, 'animals');
+    document.getElementById("war-machine-section").innerHTML = createArmy('War Machines', printAnimalMachines.machines, 'war-machines');
 })();
 
 // Objekt for å holde track på kjøpte items
