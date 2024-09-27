@@ -96,6 +96,9 @@ shopSection.addEventListener("click", (e) => {
                 price: price
             });
 
+            //Oppdaterer array i localStorage
+            localStorage.setItem("purchasedArmy", JSON.stringify(purchasedArmy));
+
         } else {
             alert(`You do not have enough gold.`);
         }
