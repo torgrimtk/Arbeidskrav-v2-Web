@@ -110,19 +110,3 @@ shopSection.addEventListener("click", (e) => {
         }    
     }
 });
-
-
-
-shopSection.innerHTML = `
-    <div class="grid-category-row">
-    ${createArmy('Warriors', warriorsData, 'warriors')}
-    </div>
-
-    <div class="grid-category-row">
-    ${createArmy('Animals', animalsData, 'animals')}
-    </div>
-
-    <div class="grid-category-row">
-    ${createArmy('War Machines', machinesData, 'war-machines')}
-    </div>
-`;
