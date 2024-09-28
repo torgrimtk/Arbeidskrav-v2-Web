@@ -84,6 +84,10 @@ shopSection.addEventListener("click", (e) => {
             document.getElementById("currentWood").textContent = currentWood;
             document.getElementById("currentIron").textContent = currentIron;
 
+            localStorage.setItem("gold", currentGold);
+            localStorage.setItem("wood", currentWood);
+            localStorage.setItem("iron", currentIron);
+
             // Oppdaterer itemcounten i objektet vi lagde over
             purchasedItems[itemId] = (purchasedItems[itemId] || 0) + 1;
             refundButton.disabled = false;
@@ -120,6 +124,10 @@ shopSection.addEventListener("click", (e) => {
         document.getElementById("currentWood").textContent = currentWood;
         document.getElementById("currentIron").textContent = currentIron;
 
+        localStorage.setItem("gold", currentGold);
+        localStorage.setItem("wood", currentWood);
+        localStorage.setItem("iron", currentIron);
+
         purchasedItems[itemId]--; // Dette decreaser itemcount    
         if (purchasedItems[itemId] === 0){
             e.target.disabled = true;
@@ -133,30 +141,30 @@ shopSection.addEventListener("click", (e) => {
     }
 });
 
-const searchInput = document.getElementById("search-input"); // Select the search input element
-const sections = document.querySelectorAll("#warrior-section, #animal-section, #war-machine-section"); // Select sections for warriors, animals, and war machines
+const searchInput = document.getElementById("search-input"); 
+const sections = document.querySelectorAll("#warrior-section, #animal-section, #war-machine-section"); 
 
-searchInput.addEventListener("input", () => { // Add event listener for input changes
-    const searchTerm = searchInput.value.toLowerCase(); // Get the current search term in lowercase
+searchInput.addEventListener("input", () => { // Legg til en event-lytter for endringer i søkeinnskriving
+    const searchTerm = searchInput.value.toLowerCase(); //gjør søkeordet om til små bokstaver
 
-    sections.forEach(section => { // Loop through each section
-        const items = section.querySelectorAll("h4"); // Select all item names in the current section
-        let found = false; // Initialize a flag to track if a match is found
+    sections.forEach(section => { // går gjennom hver section i kodeblokken
+        const items = section.querySelectorAll("h4"); // velger alle varenavn i current section
+        let found = false; 
 
-        items.forEach(item => { // Loop through each item
-            const parent = item.parentElement; // Get the parent element of the item
+        items.forEach(item => { // går gjennom hvert item i kodeblokken
+            const parent = item.parentElement; // henter parent element til varen
 
-            // Highlight the parent if the item's name includes the search term and the search term is not empty
+            // fremhever søkeordet med blåfarge om det er noe på siden med samme ord
             parent.style.backgroundColor = searchTerm && item.textContent.toLowerCase().includes(searchTerm) ? "blue" : ""; 
 
-            // If a match is found and no previous matches have been found
             if (!found && parent.style.backgroundColor) { 
-                parent.scrollIntoView({ behavior: "smooth", block: "center" }); // Scroll to the matching item
-                found = true; // Set the flag to true to stop further scrolling
+                parent.scrollIntoView({ behavior: "smooth", block: "center" }); // fører oss til søkeordet på nettsiden
+                found = true; // stopper rulling når ordet er funnet
             }
         });
     });
 });
+
 
 
 
