@@ -5,6 +5,7 @@ body {
     background-image: url(/arbeidskrav-webutvikling-24/images/castle.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .navigation-bar {
