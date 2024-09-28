@@ -31,6 +31,10 @@ body {
     font-weight: normal;
 }
 
+#sheild{
+    display: flex;
+}
+
 .resources {
     display: flex;
     justify-content: center;
