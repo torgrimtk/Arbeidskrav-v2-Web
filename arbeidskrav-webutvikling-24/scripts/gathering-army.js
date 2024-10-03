@@ -170,5 +170,3 @@ searchInput.addEventListener("input", () => { // Legg til en event-lytter for en
 
 
 
-
-
